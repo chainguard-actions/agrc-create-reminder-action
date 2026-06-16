@@ -8,6 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
+| v1.1.21 | [`v1.1.21`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.21) | [`f57c0d6`](https://github.com/agrc/create-reminder-action/commit/f57c0d69410c1db7d3ad6974b2a3f0a9c23db8f6) |
 | v1.1.23 | [`v1.1.23`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.23) | [`a641512`](https://github.com/agrc/create-reminder-action/commit/a641512b5ac55221ce1835d2e9062c0d9df11c6c) |
 
 ## Privacy
