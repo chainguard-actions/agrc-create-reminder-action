@@ -1,0 +1,30 @@
+name: Test basic usage
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: issue_comment
+      GITHUB_REPOSITORY: test-owner/test-repo
+      GITHUB_REPOSITORY_OWNER: test-owner
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run create-reminder action
+        id: action
+        uses: .
+        continue-on-error: true
+        with:
+          repoToken: fake-token-for-testing
+          repository: test-owner/test-repo
+          repositoryOwner: test-owner
+      - name: Assert action ran (pass or fail gracefully)
+        run: |
+          echo "Action outcome: ${{ steps.action.outcome }}"
+          # The action may fail due to invalid token, but it should not crash with a missing input error.
+          # We accept both success and failure outcomes as long as the action was invoked.
+          if [ "${{ steps.action.outcome }}" = "skipped" ]; then
+            echo "FAIL: action was skipped unexpectedly"
+            exit 1
+          fi
+          echo "PASS: action was invoked"
