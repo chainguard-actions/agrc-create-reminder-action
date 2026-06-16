@@ -1,0 +1,52 @@
+{
+  "name": "create-reminder-action",
+  "version": "1.1.22",
+  "private": true,
+  "description": "A GitHub Action for setting reminders in issues",
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript",
+    "probot",
+    "reminders"
+  ],
+  "homepage": "https://github.com/agrc/create-reminder-action#readme",
+  "bugs": {
+    "url": "https://github.com/agrc/create-reminder-action/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/create-reminder-action.git"
+  },
+  "license": "MIT",
+  "author": "UGRC",
+  "type": "module",
+  "scripts": {
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "check": "tsc -b",
+    "format": "prettier . --write",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "parse-reminder": "^1.4.0"
+  },
+  "devDependencies": {
+    "@octokit/webhooks-types": "^7.6.1",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/node": "^22.16.4",
+    "@ugrc/eslint-config": "^1.2.3",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-packagejson": "^2.5.19",
+    "rollup": "^4.45.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
