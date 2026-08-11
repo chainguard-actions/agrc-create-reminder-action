@@ -1,18 +1,43 @@
-# agrc/create-reminder-action
+# Create a Reminder Action
 
-Set a reminder when a comment is posted in an issue
+[![Push Events](https://github.com/agrc/create-reminder-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/create-reminder-action/actions/workflows/push.yml)
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/agrc/create-reminder-action](https://github.com/agrc/create-reminder-action).
+## About
 
-## Versions
+Based on the [probot reminder bot](https://github.com/probot/reminders/) that no longer works. Now in a 2 part github action form! One action to create the reminder metadata and label. And another to run on a schedule to let you know when your reminder is due.
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.1.21 | [`v1.1.21`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.21) | [`f57c0d6`](https://github.com/agrc/create-reminder-action/commit/f57c0d69410c1db7d3ad6974b2a3f0a9c23db8f6) |
-| v1.1.22 | [`v1.1.22`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.22) | [`30624e3`](https://github.com/agrc/create-reminder-action/commit/30624e347adbc7ff2dd287ad0632499552e048e8) |
-| v1.1.23 | [`v1.1.23`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.23) | [`a641512`](https://github.com/agrc/create-reminder-action/commit/a641512b5ac55221ce1835d2e9062c0d9df11c6c) |
-| v1.1.24 | [`v1.1.24`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.24) | [`6419686`](https://github.com/agrc/create-reminder-action/commit/64196866d8d89ce172328d200d15afb8533b7992) |
-| v1.1.25 | [`v1.1.25`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.25) | [`8798362`](https://github.com/agrc/create-reminder-action/commit/8798362d131d74a70435283581f566c4986328dd) |
+_This action requires the use of [agrc/reminder-action](https://github.com/agrc/reminder-action) as well._
+
+Use the `/remind` slash command to set a reminder on any comment box on GitHub and you'll get a ping about it again when the reminder is due.
+
+Use any form of `/remind [who] [what] [when]`, such as:
+
+- `/remind me to deploy on Oct 10`
+- `/remind me next Monday to review the requirements`
+- `/remind me that the specs on the rotary girder need checked in 6 months`
+- `/remind @<username> to fix this issue tomorrow`
+
+## Sample Usage
+
+```yml
+name: 'create reminder'
+
+permissions:
+  issues: write
+  pull-requests: write
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 👀 check for reminder
+        uses: agrc/create-reminder-action@v1
+```
 
 ## Privacy
 
