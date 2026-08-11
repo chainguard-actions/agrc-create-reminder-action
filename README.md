@@ -13,6 +13,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v1.1.23 | [`v1.1.23`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.23) | [`a641512`](https://github.com/agrc/create-reminder-action/commit/a641512b5ac55221ce1835d2e9062c0d9df11c6c) |
 | v1.1.24 | [`v1.1.24`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.24) | [`6419686`](https://github.com/agrc/create-reminder-action/commit/64196866d8d89ce172328d200d15afb8533b7992) |
 | v1.1.25 | [`v1.1.25`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.25) | [`8798362`](https://github.com/agrc/create-reminder-action/commit/8798362d131d74a70435283581f566c4986328dd) |
+| v1.1.26 | [`v1.1.26`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.26) | [`c202586`](https://github.com/agrc/create-reminder-action/commit/c2025868f56a49dfc239012c78cb8e2beee5554e) |
 
 ## Privacy
 
