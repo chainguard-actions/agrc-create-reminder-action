@@ -1,0 +1,22 @@
+name: Test no reminder in comment
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with a comment that has no reminder command
+        id: action
+        uses: .
+        with:
+          repoToken: ${{ github.token }}
+          repository: ${{ github.repository }}
+          repositoryOwner: ${{ github.repository_owner }}
+          testContextPath: ${{ github.workspace }}/tests/fixtures/no_reminder_context.mjs
+
+      - name: Assert action completed without error
+        run: |
+          echo "Action completed successfully with no reminder in comment"
+          echo "PASS: action exited cleanly when no /remind command was found"
