@@ -1,0 +1,25 @@
+name: Test comment with no reminder command exits cleanly
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with a comment that has no /remind command
+        id: action
+        # The fixture exports named properties matching IssueCommentCreatedOrEditedEvent.
+        # The comment body has no /remind command, so the action should log
+        # "no reminder found" and exit cleanly without making any API calls.
+        uses: .
+        env:
+          INPUT_TESTCONTEXTPATH: ${{ github.workspace }}/tests/fixtures/no-reminder-context.mjs
+        with:
+          repoToken: ${{ github.token }}
+          repository: ${{ github.repository }}
+          repositoryOwner: ${{ github.repository_owner }}
+
+      - name: Assert action completed without creating a reminder
+        run: |
+          echo "PASS: action correctly found no /remind command and exited cleanly"

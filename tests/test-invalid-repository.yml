@@ -1,0 +1,34 @@
+name: Test invalid repository input causes failure
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with malformed repository input and a reminder comment
+        id: action
+        continue-on-error: true
+        # The fixture has a /remind command so the action parses the reminder
+        # and then calls getIssueProps(), which validates the repository input.
+        # Passing "invalid-no-slash" (no '/' separator) should cause the action
+        # to throw "Invalid repository input: invalid-no-slash" and call setFailed().
+        uses: .
+        env:
+          INPUT_TESTCONTEXTPATH: ${{ github.workspace }}/tests/fixtures/reminder-context.mjs
+        with:
+          repoToken: ${{ github.token }}
+          repository: invalid-no-slash
+          repositoryOwner: ${{ github.repository_owner }}
+
+      - name: Assert action failed due to invalid repository format
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "failure" ]; then
+            echo "FAIL: expected action to fail with invalid repository input, got: $OUTCOME"
+            exit 1
+          fi
+          echo "PASS: action correctly failed when given an invalid repository format"
