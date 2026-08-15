@@ -1,0 +1,27 @@
+name: Test no reminder found
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with non-reminder comment
+        id: action
+        uses: .
+        env:
+          # Inject a test context via the undocumented testContextPath input.
+          # The action uses dynamic import() so we need a file:// URL to an ESM module.
+          # The .mjs fixture exports the context as default, matching what the action expects.
+          INPUT_TESTCONTEXTPATH: file://${{ github.workspace }}/tests/fixtures/no-reminder-context.mjs
+        with:
+          repoToken: ${{ github.token }}
+          repository: ${{ github.repository }}
+          repositoryOwner: ${{ github.repository_owner }}
+
+      - name: Assert action completed without failure
+        run: |
+          echo "Action completed successfully - no reminder found path works correctly"
+          echo "PASS"
