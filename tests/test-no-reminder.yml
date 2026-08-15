@@ -1,0 +1,29 @@
+name: Test no reminder found
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with a comment that has no /remind command
+        id: action
+        uses: .
+        continue-on-error: true
+        with:
+          repoToken: ${{ github.token }}
+          repository: ${{ github.repository }}
+          repositoryOwner: ${{ github.repository_owner }}
+          testContextPath: file://${{ github.workspace }}/tests/fixtures/no_reminder_payload.mjs
+
+      - name: Assert action completed without failure
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected action to succeed when no /remind command is present, but got: $OUTCOME"
+            exit 1
+          fi
+          echo "PASS: action exited cleanly when no /remind command was present"
