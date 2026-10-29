@@ -1,0 +1,22 @@
+name: Test reminder inside code block is ignored
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          testContextPath: ${{ github.workspace }}/tests/fixtures/code-block-context.mjs
+      - name: Assert action succeeded (no API calls made)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected success; reminder in a code block must be ignored"
+            exit 1
+          fi
+          echo "PASS"
