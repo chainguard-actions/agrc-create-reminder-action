@@ -14,6 +14,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v1.1.24 | [`v1.1.24`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.24) | [`6419686`](https://github.com/agrc/create-reminder-action/commit/64196866d8d89ce172328d200d15afb8533b7992) | [`HARDENING.md`](https://github.com/chainguard-actions/agrc-create-reminder-action/blob/v1.1.24/HARDENING.md) |
 | v1.1.25 | [`v1.1.25`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.25) | [`8798362`](https://github.com/agrc/create-reminder-action/commit/8798362d131d74a70435283581f566c4986328dd) | [`HARDENING.md`](https://github.com/chainguard-actions/agrc-create-reminder-action/blob/v1.1.25/HARDENING.md) |
 | v1.1.26 | [`v1.1.26`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.26) | [`c202586`](https://github.com/agrc/create-reminder-action/commit/c2025868f56a49dfc239012c78cb8e2beee5554e) | [`HARDENING.md`](https://github.com/chainguard-actions/agrc-create-reminder-action/blob/v1.1.26/HARDENING.md) |
+| v1.1.27 | [`v1.1.27`](https://github.com/chainguard-actions/agrc-create-reminder-action/tree/v1.1.27) | [`e694d5c`](https://github.com/agrc/create-reminder-action/commit/e694d5c2c66a34319815e61df43759d25da68d70) | [`HARDENING.md`](https://github.com/chainguard-actions/agrc-create-reminder-action/blob/v1.1.27/HARDENING.md) |
 
 ## Privacy
 
